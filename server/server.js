@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/login', (req, res) => {
   let data = req.body;
-  let pattern2 = /(a|aa)+a+b+$/;
+  let pattern2 = /^(([a-z])+.)+[A-Z]([a-z])+$/;
   let result2 = pattern2.test(data["username"]);
   console.log(result2)
 
