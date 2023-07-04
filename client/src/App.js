@@ -1,24 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Form from './components/Form';
+import LoginContext from './contexts/LoginContext';
+import { useContext } from "react";
 
 function App() {
+  const {login} = useContext(LoginContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="App flex flex-col items-center place-content-evenly h-screen bg-indigo-100">
+     <div className='flex items-center flex-col w-100'>
+      <Form></Form>
+      </div> 
+</div>
   );
 }
 
