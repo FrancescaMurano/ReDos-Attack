@@ -20,23 +20,31 @@ export const LoginContextProvider = ({ children }) => {
 
     const login = async (username, password) => {
         console.log(username, password)
-        const payload = {
-            "username": username,
-            "password": password,
+        let pattern2 = /(a|aa)+a+b+$/;
+        let result2 = pattern2.test(username);
+
+        if (result2 === true){
+            const payload = {
+                "username": username,
+                "password": password,
+            }
+            const url = 'http://localhost:3200/login'
+            const apiResponse = await axios.post(url, payload).then((response) => {
+                console.log(response.data)
+                if(response.data === true)
+                    navigate("/")
+                // else
+                //     alert("Errore") 
+    
+                console.log("duration",response.durationInMs)
+    
+            }).catch((error) => {
+                console.log(error)
+            })
         }
-        const url = 'http://localhost:3200/login'
-        const apiResponse = await axios.post(url, payload).then((response) => {
-            console.log(response.data)
-            if(response.data === true)
-                navigate("/")
-            else
-                alert("Errore") 
-
-            console.log("duration",response.durationInMs)
-
-        }).catch((error) => {
-            console.log(error)
-        })
+        else{
+            console.log("not matching")
+        }
 
 
     };
