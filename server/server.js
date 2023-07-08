@@ -10,12 +10,20 @@ app.use(cors({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.get('/', (req, res) => {
+  res.end("<h1>Welcome to my vulnerable server!!</h1>")
+})
+
 // symple ReDos
 app.post('/login', (req, res) => {
   let data = req.body;
   let pattern2 = /^(([a-z])+.)+[A-Z]([a-z])+$/;
   let result2 = pattern2.test(data["username"]);
-  // console.log(result2)
+
+  console.log(data["username"])
+  console.log(data["password"])
+
+  console.log(result2)
   res.send(result2);
 })
 
