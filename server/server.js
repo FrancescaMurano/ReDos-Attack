@@ -32,6 +32,7 @@ app.post('/register', (req, res) => {
   let data = req.body;
   username = data["username"]
   password = data["password"]
+  console.log("username ",username,"password ",password)
   testPassword = new RegExp(username);
   
   match = password.match(testPassword);
