@@ -20,10 +20,8 @@ app.post('/login', (req, res) => {
   let pattern2 = /^(([a-z])+.)+[A-Z]([a-z])+$/;
   let result2 = pattern2.test(data["username"]);
 
-  console.log(data["username"])
-  console.log(data["password"])
-
-  console.log(result2)
+  console.log("username received:",data["username"])
+  console.log("password received",data["password"])
   res.send(result2);
 })
 
@@ -47,7 +45,4 @@ app.listen(3200, () => {
   console.log('Example app listening on port 3200!')
 })
 
-// EVIL REGEX TO INSERT ^(([a-z])+.)+[A-Z]([a-z])+$ 
-
-// curl -X POST  http://localhost:3200/register -d "username=^(([a-z])%2B.)%2B[A-Z]([a-z])%2B$&password=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!"
 
