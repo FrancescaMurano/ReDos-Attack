@@ -17,12 +17,13 @@ app.get('/', (req, res) => {
 // symple ReDos
 app.post('/login', (req, res) => {
   let data = req.body;
-  let pattern2 = /^(([a-z])+.)+[A-Z]([a-z])+$/;
-  let result2 = pattern2.test(data["username"]);
+  let pattern = /^(([a-z])+.)+[A-Z]([a-z])+$/;
+  let result = pattern.test(data["username"]);
 
   console.log("username received:",data["username"])
   console.log("password received",data["password"])
-  res.send(result2);
+
+  res.send(result);
 })
 
 // Vulnerable to regex injection, attacker insert in username field an evil regex and in password a crafted input that implies ReDos.
@@ -30,7 +31,9 @@ app.post('/register', (req, res) => {
   let data = req.body;
   username = data["username"]
   password = data["password"]
+  
   console.log("username ",username,"password ",password)
+  // vulnerable 
   testPassword = new RegExp(username);
   
   match = password.match(testPassword);
